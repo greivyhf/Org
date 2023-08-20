@@ -1,5 +1,5 @@
 import './Formulario.css';
-import CampoTexto from '../CampoTexto/CampoTexto';
+import CampoTexto from '../CampoTexto';
 
 const Formulario =()=>{
    return <section className='formulario'>
