@@ -1,7 +1,7 @@
 
 import './App.css';
-import Header from "./componentes/Header/Header"
-import Formulario from './componentes/Formulario/Formulario';
+import Header from "./componentes/Header"
+import Formulario from './componentes/Formulario';
 
 function App() {
   return (
