@@ -5,14 +5,22 @@ import Boton from '../Boton';
 import { useState } from 'react';
 
 const Formulario =()=>{
-
-    const manejarEnvio = (e)=>{
-        e.preventDefault()
-        console.log("Se ha dado click al boton")
-    }
     const [nombre,setNombre] = useState("")
     const [puesto,setPuesto] = useState("")
     const [foto,setFoto] = useState("")
+    const [equipo,setEquipo] = useState("")
+
+    const manejarEnvio = (e)=>{
+        e.preventDefault()
+    
+        const manejarEnvio ={
+            nombre: nombre,
+            puesto: puesto,
+            foto: foto,
+            equipo: equipo
+        }
+        console.log(manejarEnvio)
+    }
 
    return <section className='formulario'>
     <form onSubmit={manejarEnvio}>
@@ -38,7 +46,11 @@ const Formulario =()=>{
             valor={foto} 
             actualizarValor={setFoto}
         />
-        <ListaOpciones required/>
+        <ListaOpciones
+            valor={equipo} 
+            actualizarValor={setEquipo}
+            required
+        />
         <Boton texto="Crear"/>
     </form>
    </section>

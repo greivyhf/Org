@@ -4,7 +4,6 @@ import './CampoTexto.css'
 const CampoTexto =(props)=>{
   
     const placeholderModificado = `${props.placeholder}...`
-    console.log("Datos", props)
     const manejarValor=(e)=>{
         props.actualizarValor(e.target.value)
     }
