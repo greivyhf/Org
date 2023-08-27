@@ -47,21 +47,37 @@ function App() {
   ];
 
   const [mostrarFormulario, actualizarMostrar] = useState(true);
+  const [colaboradores, actualizarColaboradores] = useState([])
   //ternario --> condicion ? SiEsTrue : SiEsFalse
   //Condicion && Muestra
  const cambiarEstado =()=>{
   actualizarMostrar(!mostrarFormulario)
  }
+
+const registrarColaborador= (colaborador)=>{
+ console.log("Nuevo colaborador ",colaborador)
+ //Spread operator, estamos copiando algo, traemos colaborador y se lo copiamos a colaboradores
+ actualizarColaboradores([...colaboradores, colaborador])
+}
+
   return (
     <div>
       <Header/>
       {/* {mostrarFormulario=== true? <Formulario/>: <div></div>} */}
-      {mostrarFormulario && <Formulario equipos={equipos.map((equipo) => equipo.titulo)} />}
+      {mostrarFormulario && <Formulario 
+        equipos={equipos.map((equipo) => equipo.titulo)}
+        registrarColaborador={registrarColaborador}
+        />
+       }
+
       <MiOrg cambiarEstado={cambiarEstado} />
       {
-        equipos.map((equipo) =>{
-          return <Equipo datos={equipo} key={equipo.titulo} />
-        })
+        equipos.map((equipo) =>
+          <Equipo datos={equipo} 
+            key={equipo.titulo}
+            colaboradores={colaboradores}
+          />
+        )
       }
     </div>
   );
