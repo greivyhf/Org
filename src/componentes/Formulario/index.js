@@ -4,12 +4,11 @@ import ListaOpciones from '../ListaOpciones';
 import Boton from '../Boton';
 import { useState } from 'react';
 
-const Formulario =()=>{
+const Formulario =(props)=>{
     const [nombre,setNombre] = useState("")
     const [puesto,setPuesto] = useState("")
     const [foto,setFoto] = useState("")
     const [equipo,setEquipo] = useState("")
-
     const manejarEnvio = (e)=>{
         e.preventDefault()
     
@@ -50,6 +49,7 @@ const Formulario =()=>{
             valor={equipo} 
             actualizarValor={setEquipo}
             required
+            listaEquipos={props.equipos}
         />
         <Boton texto="Crear"/>
     </form>
