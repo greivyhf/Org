@@ -1,6 +1,7 @@
 .colaborador{
     width: 280px;
     margin-bottom: 24px;
+    position: relative;
 }
 .colaborador .encabezado{
 background-color: #f0f0f0;
@@ -33,4 +34,11 @@ border-radius:  10px 10px 0px 0px;
     padding: 0 24px;
     font-weight: 400;
     margin: 0;
+}
+.eliminar{
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    height: 30px;
+    width: 30px;
 }

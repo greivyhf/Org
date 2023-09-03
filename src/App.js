@@ -5,6 +5,7 @@ import Header from "./componentes/Header"
 import Formulario from './componentes/Formulario';
 import MiOrg from './componentes/MiOrg';
 import Equipo from './componentes/Equipo';
+import Footer from './componentes/Footer';
 
 
 function App() {
@@ -47,7 +48,41 @@ function App() {
   ];
 
   const [mostrarFormulario, actualizarMostrar] = useState(true);
-  const [colaboradores, actualizarColaboradores] = useState([])
+  const [colaboradores, actualizarColaboradores] = useState([
+    {
+      equipo:"Front End",
+      foto:"https://github.com/harlandlohora.png",
+      nombre:"Harland Lohora",
+      puesto:"Instructor",
+    },
+    {
+      equipo:"Programación",
+      foto:"https://github.com/genesysaluralatam.png",
+      nombre:"Genesys Rondon",
+      puesto:"Desarrolladora de software e instructora",
+    },
+    {
+      equipo:"UX y Diseño",
+      foto:"https://github.com/JeanmarieAluraLatam.png",
+      nombre:"Jeanmarie Quijada",
+      puesto:"Instructora en Alura Latam",
+    },
+    {
+      equipo:"Programación",
+      foto:"https://github.com/christianpva.png",
+      nombre:"Christian Velasco",
+      puesto:"Head de Alura e Instructor",
+    },
+    {
+      equipo:"Innovación y Gestión",
+      foto:"https://github.com/JoseDarioGonzalezCha.png",
+      nombre:"Jose Gonzalez",
+      puesto:"Dev Fullstack",
+    }
+  ])
+  const eliminarColaborador =()=>{
+    console.log("Eliminar colaborador")
+  }
   //ternario --> condicion ? SiEsTrue : SiEsFalse
   //Condicion && Muestra
  const cambiarEstado =()=>{
@@ -75,10 +110,11 @@ const registrarColaborador= (colaborador)=>{
         equipos.map((equipo) =>
           <Equipo datos={equipo} 
             key={equipo.titulo}
-            colaboradores={colaboradores}
+            colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)} eliminarColaborador={eliminarColaborador}
           />
         )
       }
+      <Footer/>
     </div>
   );
 }
