@@ -4,6 +4,7 @@
     text-align: center;
     padding: 32px;
     box-sizing: border-box;
+    position: relative;
 }
 .equipo h3{ 
     display: inline-block;
@@ -16,4 +17,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly; 
+}
+.input-color{
+    position: absolute;
+    top: 30px;
+    right: 50px;
 }
