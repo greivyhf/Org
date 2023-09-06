@@ -12,7 +12,7 @@ import {v4 as uuid} from 'uuid'
 function App() {
  
 
-  const [mostrarFormulario, actualizarMostrar] = useState(true);
+  const [mostrarFormulario, actualizarMostrar] = useState(false);
   const [colaboradores, actualizarColaboradores] = useState([
     {
       id: uuid(),
@@ -20,6 +20,7 @@ function App() {
       foto:"https://github.com/harlandlohora.png",
       nombre:"Harland Lohora",
       puesto:"Instructor",
+      fav: false
     },
     {
       id: uuid(),
@@ -27,6 +28,7 @@ function App() {
       foto:"https://github.com/genesysaluralatam.png",
       nombre:"Genesys Rondon",
       puesto:"Desarrolladora de software e instructora",
+      fav: false
     },
     {
       id: uuid(),
@@ -34,6 +36,7 @@ function App() {
       foto:"https://github.com/JeanmarieAluraLatam.png",
       nombre:"Jeanmarie Quijada",
       puesto:"Instructora en Alura Latam",
+      fav: true
     },
     {
       id: uuid(),
@@ -41,6 +44,7 @@ function App() {
       foto:"https://github.com/christianpva.png",
       nombre:"Christian Velasco",
       puesto:"Head de Alura e Instructor",
+      fav: false
     },
     {
       id: uuid(),
@@ -48,6 +52,7 @@ function App() {
       foto:"https://github.com/JoseDarioGonzalezCha.png",
       nombre:"Jose Gonzalez",
       puesto:"Dev Fullstack",
+      fav: false
     }
   ])
   const [equipos, actualizarEquipos] = useState([
@@ -126,7 +131,15 @@ const crearEquipo =(nuevoEquipo) => {
   console.log(nuevoEquipo)
   actualizarEquipos([...equipos, {...nuevoEquipo, id: uuid()}])
 }
-
+const like =(id)=>{
+const colaboradoresActualizados = colaboradores.map((colaborador)=>{
+  if(colaborador.id == id){
+    colaborador.fav = !colaborador.fav
+  }
+  return colaborador
+})
+actualizarColaboradores(colaboradoresActualizados)
+}
   return (
     <div>
       <Header/>
@@ -146,6 +159,7 @@ const crearEquipo =(nuevoEquipo) => {
             colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
             eliminarColaborador={eliminarColaborador}
             actualizarColor={actualizarColor}
+            like={like}
           />
         )
       }
